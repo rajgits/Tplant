@@ -41,6 +41,9 @@ export default function Home() {
 
   const handleClick = () => {
     setPoints(points + 1); // Increment points on click
+    if (navigator.vibrate) { // Check if the device supports vibration
+      navigator.vibrate(200); // Vibrate for 200 milliseconds
+    }
   };
 
   return (
@@ -71,7 +74,7 @@ export default function Home() {
           </div>
 
           <p className="text-[#111618] text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">
-            Hi {username}
+            Click the button and see what happens next.
           </p>
 
           <div className="flex px-4 py-3 w-full">
