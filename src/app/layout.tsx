@@ -16,6 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="telegram-web-app" content="https://api.telegram.org/bot7222947486:AAEGif679Umfb5DmECIZdtioPXrVRinF1ng/"></meta>
       <body className={inter.className}>{children}</body>
     </html>
   );
