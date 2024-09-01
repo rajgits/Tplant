@@ -43,6 +43,8 @@ export default function Home() {
     setPoints(points + 1); // Increment points on click
     if (navigator.vibrate) { // Check if the device supports vibration
       navigator.vibrate(200); // Vibrate for 200 milliseconds
+    } else {
+      console.log("Vibration not supported"); // Log if vibration is not supported
     }
   };
 
