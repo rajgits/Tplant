@@ -2,10 +2,42 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react"; // Add this import
+import { useEffect, useState } from "react"; // Ensure useEffect is imported
+
+// Declare TelegramWebApp if not recognized
+declare global {
+  interface Window {
+    TelegramWebApp: any; // Adjust type as necessary
+  }
+}
 
 export default function Home() {
   const [points, setPoints] = useState(0); // Add state for points
+  const [userId, setUserId] = useState(''); // Added state for user ID
+  const [username, setUsername] = useState(''); // Added state for username
+
+  useEffect(() => {
+    // Ensure the SDK is available and initialized
+    if (typeof window.TelegramWebApp !== 'undefined') {
+      window.TelegramWebApp.ready();
+      const initDataString = window.TelegramWebApp.initData;
+      console.log('initDataString', initDataString);
+      // Retrieve user information
+      const user = window.TelegramWebApp.initDataUnsafe?.user;
+      if (user) {
+        setUsername(user.username);
+        setUserId(user.id); // Set the user ID
+      }
+
+      // Optionally listen for user updates or other events
+      window.TelegramWebApp.onEvent('userChanged', (user: { username: string; id: string }) => { // Specify user type
+        setUsername(user.username);
+        setUserId(user.id); // Update the user ID
+      });
+    }
+  }, []);
+
+  console.log(userId); // Log the username
 
   const handleClick = () => {
     setPoints(points + 1); // Increment points on click
@@ -39,7 +71,7 @@ export default function Home() {
           </div>
 
           <p className="text-[#111618] text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">
-            Click the button and see what happens next.
+            Hi {username}
           </p>
 
           <div className="flex px-4 py-3 w-full">
