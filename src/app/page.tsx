@@ -12,23 +12,20 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-4 md:p-24">
       <div
         className="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden"
         style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}
       >
-        <div>
-          <div className="flex items-center bg-white p-4 pb-2 justify-between">
-            <h2 className="text-[#111618] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">
-              TPlant
-            </h2>
-          </div>
+        <div className="flex flex-col items-center w-full">
+          <h2 className="text-[#111618] text-lg font-bold leading-tight tracking-[-0.015em] text-center">
+            TPlant
+          </h2>
 
-          {/* <Link href="/about">Go to About Page</Link> */}
-          <div className="container">
-            <div className="px-4 py-3">
+          <div className="container w-full">
+            <div className="px-4 py-3 w-full">
               <div
-                className="bg-cover bg-center flex flex-col justify-end overflow-hidden bg-white rounded-xl min-h-[218px]"
+                className="bg-cover bg-center flex flex-col justify-end overflow-hidden bg-white rounded-xl min-h-[218px] w-full"
                 style={{
                   backgroundImage:
                     'linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%), url("https://cdn.usegalileo.ai/sdxl10/864c3891-1538-4e28-a152-1b5e3ddac8da.png")',
@@ -41,11 +38,11 @@ export default function Home() {
             </div>
           </div>
 
-          <p className="text-[#111618] text-base font-normal leading-normal pb-3 pt-1 px-4">
+          <p className="text-[#111618] text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">
             Click the button and see what happens next.
           </p>
 
-          <div className="flex px-4 py-3">
+          <div className="flex px-4 py-3 w-full">
             <button
               onClick={handleClick} // Update button to handle click
               className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#333] text-white text-lg font-bold leading-normal tracking-[0.015em] shadow-lg transition-transform transform hover:scale-105"
@@ -54,7 +51,7 @@ export default function Home() {
             </button>
           </div>
 
-          <p className="text-[#111618] text-3xl font-bold leading-normal pb-3 pt-1 px-4">
+          <p className="text-[#111618] text-3xl font-bold leading-normal pb-3 pt-1 px-4 text-center">
             Points: {points} {/* Display points */}
           </p>
         </div>
