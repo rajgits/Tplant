@@ -45,21 +45,36 @@ export default function Home() {
       navigator.vibrate(200); // Vibrate for 200 milliseconds
     }
 
-    // Create a water drop effect
+    // Create a water drop effect with staggered timing
     for (let i = 0; i < 10; i++) { // Create multiple drops
-      const drop = document.createElement('span'); // Create a new span for the drop
-      drop.textContent = '🤽🏻‍♂️🚿💦'; // Set the content to a water drop emoji
-      drop.style.position = 'fixed';
-      drop.style.fontSize = '24px'; // Adjust size as needed
-      drop.style.pointerEvents = 'none'; // Allow clicks to pass through
-      drop.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-      drop.style.top = `${Math.random() * 100}vh`; // Random vertical position
-      document.body.appendChild(drop); // Append to the body
-
-      // Remove the drop after a short duration
       setTimeout(() => {
-        drop.remove(); // Remove the drop after 1 second
-      }, 1000);
+        const drop = document.createElement('span'); // Create a new span for the drop
+        drop.textContent = '💧'; // Set the content to a water drop emoji
+        drop.style.position = 'fixed';
+        drop.style.fontSize = '24px'; // Adjust size as needed
+        drop.style.pointerEvents = 'none'; // Allow clicks to pass through
+        drop.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+        drop.style.top = `-50px`; // Start above the viewport
+        document.body.appendChild(drop); // Append to the body
+
+        // Animate the drop falling
+        drop.animate(
+          [
+            { transform: 'translateY(0)', opacity: 1 }, // Start position
+            { transform: 'translateY(100vh)', opacity: 0 } // End position
+          ],
+          {
+            duration: 1000, // Duration of the fall
+            easing: 'ease-in', // Easing function
+            fill: 'forwards' // Keep the final state
+          }
+        );
+
+        // Remove the drop after the animation
+        setTimeout(() => {
+          drop.remove(); // Remove the drop after 1 second
+        }, 1000);
+      }, i * 200); // Stagger drops by 200ms
     }
   };
 
