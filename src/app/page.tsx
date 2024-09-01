@@ -43,8 +43,23 @@ export default function Home() {
     setPoints(points + 1); // Increment points on click
     if (navigator.vibrate) { // Check if the device supports vibration
       navigator.vibrate(200); // Vibrate for 200 milliseconds
-    } else {
-      console.log("Vibration not supported"); // Log if vibration is not supported
+    }
+
+    // Create a water drop effect
+    for (let i = 0; i < 10; i++) { // Create multiple drops
+      const drop = document.createElement('span'); // Create a new span for the drop
+      drop.textContent = '🤽🏻‍♂️🚿💦'; // Set the content to a water drop emoji
+      drop.style.position = 'fixed';
+      drop.style.fontSize = '24px'; // Adjust size as needed
+      drop.style.pointerEvents = 'none'; // Allow clicks to pass through
+      drop.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+      drop.style.top = `${Math.random() * 100}vh`; // Random vertical position
+      document.body.appendChild(drop); // Append to the body
+
+      // Remove the drop after a short duration
+      setTimeout(() => {
+        drop.remove(); // Remove the drop after 1 second
+      }, 1000);
     }
   };
 

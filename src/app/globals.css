@@ -18,16 +18,38 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+.water-shower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 255, 0.5);
+  /* Semi-transparent blue */
+  pointer-events: none;
+  /* Allow clicks to pass through */
+  animation: shower 1s forwards;
+  /* Animation for the effect */
+}
+
+@keyframes shower {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    /* Fade out effect */
   }
 }
